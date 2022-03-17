@@ -39,4 +39,4 @@ class ToDoItem(models.Model):
 
     # a Meta class allows you to set some useful options(ordering for ToDoItem records
     class Meta:
-        ordering = ["due_date"]
+        ordering = ["due_time"]
