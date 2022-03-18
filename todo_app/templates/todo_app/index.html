@@ -1,15 +1,16 @@
-{% extends 'todo_app/base.html' %}
+{% extends "todo_app/base.html" %}
 
 {% block content %}
 {% if object_list %}
-<h3>All my list</h3>
+<h3>All my lists</h3>
 {% endif %}
 <ul>
-    {% for todo_list in object_list %}
+    {% for todolist in object_list %}
     <li>
         <div
             role="button"
             onclick="location.href='{% url "list" todolist.id %}'">
+
             {{todolist.title}}
         </div>
     </li>
@@ -18,4 +19,4 @@
     {% endfor %}
 </ul>
 
-{% endblock%}
+{% endblock %}
