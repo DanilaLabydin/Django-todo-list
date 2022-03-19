@@ -1,6 +1,6 @@
-from django.views.generic import ListView, CreateView, UpdateView
+from django.views.generic import ListView, CreateView, UpdateView, DetailView
 from .models import ToDoList, ToDoItem
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 
 
 # the ListListView class will display a list of the to-do list titles
@@ -30,6 +30,11 @@ class ListCreate(CreateView):
         context = super(ListCreate, self).get_context_data()
         context['title'] = 'Add a new list'
         return context
+
+
+class ListDelete(DetailView):
+    model = ToDoList
+    success_url = reverse_lazy('index')
 
 
 class ItemCreate(CreateView):
@@ -76,3 +81,14 @@ class ItemUpdate(UpdateView):
     def get_success_url(self):
         return reverse('list', args=[self.object.todo_list_id])
 
+
+class ItemDelete(DetailView):
+    model = ToDoItem
+
+    def get_success_url(self):
+        return reverse_lazy('list', args=[self.kwargs['list_id']])
+
+    def get_context_data(self, **kwargs):
+        context = super(ItemDelete, self).get_context_data(**kwargs)
+        context['todo_list'] = self.object.todo_list
+        return context
