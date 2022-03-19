@@ -38,7 +38,7 @@ class ItemCreate(CreateView):
         'todo_list',
         'title',
         'description',
-        'due_date',
+        'due_time',
     ]
 
     def get_initial(self):
@@ -64,7 +64,7 @@ class ItemUpdate(UpdateView):
         'todo_list',
         'title',
         'description',
-        'due_date',
+        'due_time',
     ]
 
     def get_context_data(self, **kwargs):
@@ -75,3 +75,4 @@ class ItemUpdate(UpdateView):
 
     def get_success_url(self):
         return reverse('list', args=[self.object.todo_list_id])
+

@@ -3,9 +3,10 @@ from . import views
 
 urlpatterns = [
     path('', views.ListListView.as_view(), name='index'),
-    path('list/<int:list_id>/', views.ItemListView.as_view(), name='list')
+    path('list/<int:list_id>/', views.ItemListView.as_view(), name='list'),
+
     # crud patterns for ToDoList
-    path('list/add/', views.ListCreate.as_view(), name='list_add'),
+    path('list/add/', views.ListCreate.as_view(), name='list-add'),
     # crud patterns for ToDoItems
     path(
         'list/<int:list_id>/item/add/',
@@ -17,4 +18,5 @@ urlpatterns = [
         views.ItemUpdate.as_view(),
         name='item-update'
     ),
+
 ]
