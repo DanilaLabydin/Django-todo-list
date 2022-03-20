@@ -5,7 +5,7 @@ from django.urls import reverse
 
 # create a function that can handle deadlines
 def one_week_hence():
-    return timezone.now() + timezone.timedelta(days=7)
+    return timezone.now()
 
 
 # create a class that represents a database model

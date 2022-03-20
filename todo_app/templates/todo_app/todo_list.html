@@ -16,7 +16,7 @@
                         onclick="location.href=
                         '{% url "item-update" todo_list.id todo.id %}'">
                         {{todo.title}}
-                        (Due {{ todo.due_time | date:"l, F j" }})
+                        ({{ todo.created_data | date:"l, F j" }})
                     </div>
                 </div>
             </li>
